@@ -1,0 +1,15 @@
+<div class="event-cards" style="display: flex; flex-wrap: wrap; gap: 16px;">
+  <mat-card *ngFor="let event of events" style="width: 300px;">
+    <mat-card-header>
+      <mat-card-title>{{ event.title }}</mat-card-title>
+      <mat-card-subtitle>{{ event.event_date | date: 'short' }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ event.description }}</p>
+      <p><strong>Género:</strong> {{ event.preferred_genre }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-button color="primary" [href]="event.tickets_link" target="_blank">Comprar Entradas</a>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,15 @@
+.sidenav-container {
+  height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+mat-sidenav-content {
+  flex: 1;
+  overflow: auto;
+  padding: 20px 40px;
+}
+
+mat-sidenav {
+  width: 250px;
+}

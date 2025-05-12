@@ -1,0 +1,31 @@
+{
+  "events": [
+    {
+      "event_id": 1,
+      "title": "Concierto de Rock",
+      "description": "Un evento para los amantes del rock clásico.",
+      "event_date": "2023-12-15T20:00:00",
+      "preferred_genre": "Rock",
+      "tickets_link": "http://tickets.com/rock-concert",
+      "rehearsal_required": true
+    },
+    {
+      "event_id": 2,
+      "title": "Festival de Jazz",
+      "description": "Disfruta de una noche de jazz con artistas internacionales.",
+      "event_date": "2023-12-20T19:00:00",
+      "preferred_genre": "Jazz",
+      "tickets_link": "http://tickets.com/jazz-festival",
+      "rehearsal_required": false
+    },
+    {
+      "event_id": 3,
+      "title": "Noche de Música Electrónica",
+      "description": "Los mejores DJs en una noche inolvidable.",
+      "event_date": "2023-12-25T22:00:00",
+      "preferred_genre": "Electrónica",
+      "tickets_link": "http://tickets.com/electronic-night",
+      "rehearsal_required": false
+    }
+  ]
+}
