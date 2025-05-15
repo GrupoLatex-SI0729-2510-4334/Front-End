@@ -1,0 +1,155 @@
+
+.profile-container {
+  display: flex;
+  flex-basis: content;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  border-radius: 10px;
+  margin: auto;
+  background-color: #1A1A1A;
+
+}
+
+.profile-header {
+  background-color: #DDB504;
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  width: 800px;
+}
+
+.profile-header h2 {
+  color: #ffffff;
+  margin: 0;
+  text-align: center;
+  align-items: center;
+}
+
+.profile-form-container {
+  display: flex;
+  justify-content: space-around;
+  background-color: #d1D1D1;
+  padding: 30px;
+  width: 800px;
+  height: 600px;
+}
+
+.name-last-name{
+  display: flex;
+  flex-direction: row;
+}
+
+.telefono-dni{
+  display: flex;
+  flex-direction: row;
+}
+.profile-form {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+
+.form-group input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.save-button {
+  background-color: #DDB504;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.save-button:hover {
+  background-color: #ff9f33;
+}
+
+.space-form-suscription{
+  padding: 30px;
+}
+.space-name-lastname{
+  padding: 10px;
+}
+.subscription-box {
+  margin-bottom: 20px;
+}
+
+.subscription-box h3 {
+  font-weight: normal;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 5px;
+}
+
+.conteiner-subscription-title{
+  background-color: #DDB504;
+  color: white;
+  padding: 5px;
+}
+
+.subs-team-paid {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subscription-details {
+  font-size: 12px;
+  background-color: #ffffff;
+  margin-top: 0px;
+  padding: 20px;
+}
+.subscription-details button {
+  background-color: #DDB504;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+.subscription-details button:hover {
+  background-color: #DDB504;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.payment-options {
+  margin-top: 20px;
+}
+
+.payment-options .option {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.payment-options label {
+  margin-left: 10px;
+}
+.name-last-name{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
