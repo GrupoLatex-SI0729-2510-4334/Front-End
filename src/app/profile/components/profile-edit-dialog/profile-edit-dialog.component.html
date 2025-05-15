@@ -1,0 +1,23 @@
+<h2 mat-dialog-title><strong>Edit Profile</strong></h2>
+<mat-dialog-content>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput [(ngModel)]="profile.name" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Occupation</mat-label>
+    <input matInput [(ngModel)]="profile.occupation" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Email</mat-label>
+    <input matInput [(ngModel)]="profile.email" />
+  </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Biography</mat-label>
+    <textarea matInput [(ngModel)]="profile.biography"></textarea>
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button class="cancel-button" (click)="onCancel()">Cancel</button>
+  <button mat-raised-button class="save-button" color="primary" (click)="onSave()">Save</button>
+</mat-dialog-actions>
