@@ -1,0 +1,11 @@
+.evaluated-events-container {
+  position: relative;
+  padding: 16px;
+}
+
+.back-button {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+}
