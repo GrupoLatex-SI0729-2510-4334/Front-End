@@ -1,4 +1,15 @@
 {
+  "profiles": [
+    {
+      "id": 1,
+      "type": "Musician",
+      "name": "DJ Shadow",
+      "email": "dj.shadow@gmail.com",
+      "image": "https://i.discogs.com/nUM4uZES5D-emLU_vWnqUMFt-ZoKwg17toq8b5f2XXI/rs:fit/g:sm/q:90/h:455/w:367/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQ0Nzgt/MTU4NDUzMTkxNy04/MjMwLmpwZWc.jpeg",
+      "occupation": "Electric Music Producer",
+      "biography": "Electronic music producer with over 10 years of experience. Specializing in house, techno, and experimental electronic music."
+    }
+  ],
   "events": [
     {
       "event_id": 1,
