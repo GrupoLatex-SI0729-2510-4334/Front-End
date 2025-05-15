@@ -10,7 +10,7 @@ describe('SearchPageComponent', () => {
     await TestBed.configureTestingModule({
       imports: [SearchPageComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SearchPageComponent);
     component = fixture.componentInstance;

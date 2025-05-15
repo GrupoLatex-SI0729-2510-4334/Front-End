@@ -1,1 +1,23 @@
-<p>search-function works!</p>
+<div>
+  <h2>Buscar Eventos</h2>
+  <label for="genre">Filtrar por género:</label>
+  <select id="genre" #genreSelect (change)="filterByGenre(genreSelect.value)">
+    <option value="">Todos</option>
+    <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+  </select>
+</div>
+
+<div *ngIf="filteredEvents.length > 0; else noEvents">
+  <div *ngFor="let event of filteredEvents" class="event-card">
+    <h3>{{ event.title }}</h3>
+    <p>{{ event.description }}</p>
+    <p><strong>Fecha:</strong> {{ event.event_date | date }}</p>
+    <p><strong>Género:</strong> {{ event.preferred_genre }}</p>
+    <button (click)="showMoreInfo(event)">Mostrar más información</button>
+    <button (click)="postulate(event)">Postular</button>
+  </div>
+</div>
+
+<ng-template #noEvents>
+  <p>No se encontraron eventos.</p>
+</ng-template>
