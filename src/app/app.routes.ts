@@ -5,6 +5,9 @@ import {ProfilePageComponent} from './profile/pages/profile-page/profile-page.co
 import {PostulationsPageComponent} from './postulations/pages/postulations-page/postulations-page.component';
 import {EvaluationsPageComponent} from './evaluations/pages/evaluations-page/evaluations-page.component';
 import {AgendaPageComponent} from './agenda/pages/agenta-page/agenda-page.component';
+import {
+  PostulationsDetailsComponent
+} from './postulations/components/postulations-details/postulations-details.component';
 
 export const routes: Routes = [
   { path: 'dashboard', component: HomePageComponent },
@@ -13,5 +16,6 @@ export const routes: Routes = [
   { path: 'postulations', component: PostulationsPageComponent },
   { path: 'evaluations', component: EvaluationsPageComponent },
   { path: 'agenda', component: AgendaPageComponent },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
+  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
+  { path: 'postulations-details', component: PostulationsDetailsComponent }
 ];

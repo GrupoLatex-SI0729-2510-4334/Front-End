@@ -1,0 +1,78 @@
+<div class="profile-container">
+  <div class="profile-header">
+    <h2>Datos para postular</h2>
+  </div>
+
+  <div class="profile-form-container">
+    <div class="profile-form">
+
+      <div class="name-last-name">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" value="" />
+        </div>
+
+        <div class="form-group">
+          <label for="last-names">Last Names</label>
+          <input type="text" id="last-names" value="" />
+        </div>
+      </div>
+
+      <div class="name-last-name">
+        <div class="form-group">
+          <label for="phone">Telephone Number</label>
+          <input type="text" id="phone" value="" />
+        </div>
+
+        <div class="form-group">
+          <label for="dni">DNI</label>
+          <input type="text" id="dni" value="" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" id="address" value="" />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" value="" />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Nombre de la banda o Nombre Artistico</label>
+        <input type="password" id="password" placeholder="Enter your Artistic Name" />
+        <button class="save-button" [routerLink]="['/postulations']" >Save</button>
+      </div>
+
+    </div>
+
+    <div class="space-form-suscription">
+    </div>
+    <div class="left-boxes">
+
+
+
+
+      <div class="subscription-box">
+        <div class="conteiner-subscription-title">
+          <h3>Payment method</h3>
+        </div>
+        <div class="subscription-details">
+
+          <div class="info-payment">
+            <p>Credit/Debit Card</p>
+            <p>XXXX-XXXX-XXXX-6789</p>
+            <p>Expiration Date</p>
+            <p>07/30</p>
+          </div>
+          <button [routerLink]="['/payment-method']">Add Method</button>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
