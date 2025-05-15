@@ -3,8 +3,8 @@
     {
       "event_id": 1,
       "title": "Concierto de Rock",
-      "description": "Un evento para los amantes del rock clásico.",
-      "event_date": "2023-12-15T20:00:00",
+      "description": "¿Eres un músico de rock? Postúlate para ser parte de este evento dedicado al rock clásico.",
+      "event_date": "2025-05-20T20:00:00",
       "preferred_genre": "Rock",
       "tickets_link": "http://tickets.com/rock-concert",
       "rehearsal_required": true
@@ -12,8 +12,8 @@
     {
       "event_id": 2,
       "title": "Festival de Jazz",
-      "description": "Disfruta de una noche de jazz con artistas internacionales.",
-      "event_date": "2023-12-20T19:00:00",
+      "description": "Buscamos músicos de jazz talentosos para una noche inolvidable. ¡Postúlate ahora!",
+      "event_date": "2025-05-25T19:00:00",
       "preferred_genre": "Jazz",
       "tickets_link": "http://tickets.com/jazz-festival",
       "rehearsal_required": false
@@ -21,11 +21,92 @@
     {
       "event_id": 3,
       "title": "Noche de Música Electrónica",
-      "description": "Los mejores DJs en una noche inolvidable.",
-      "event_date": "2023-12-25T22:00:00",
+      "description": "Invitamos a DJs y productores a postularse para este evento de música electrónica.",
+      "event_date": "2025-06-01T22:00:00",
       "preferred_genre": "Electrónica",
       "tickets_link": "http://tickets.com/electronic-night",
       "rehearsal_required": false
+    },
+    {
+      "event_id": 4,
+      "title": "Festival de Música Clásica",
+      "description": "Se buscan músicos y orquestas para participar en este prestigioso festival. ¡Postúlate!",
+      "event_date": "2025-06-10T18:00:00",
+      "preferred_genre": "Clásica",
+      "tickets_link": "http://tickets.com/classical-festival",
+      "rehearsal_required": true
+    },
+    {
+      "event_id": 5,
+      "title": "Concierto de Pop",
+      "description": "¿Cantas o tocas música pop? Postúlate para interpretar los éxitos más populares.",
+      "event_date": "2025-06-15T20:00:00",
+      "preferred_genre": "Pop",
+      "tickets_link": "http://tickets.com/pop-concert",
+      "rehearsal_required": false
+    },
+    {
+      "event_id": 6,
+      "title": "Festival de Reggae",
+      "description": "Buscamos artistas de reggae para vibrar con el público en este festival. ¡Postúlate ahora!",
+      "event_date": "2025-06-20T19:00:00",
+      "preferred_genre": "Reggae",
+      "tickets_link": "http://tickets.com/reggae-festival",
+      "rehearsal_required": false
+    },
+    {
+      "event_id": 7,
+      "title": "Festival de Hip-Hop",
+      "description": "Si eres rapero o artista de hip-hop, este es tu momento. ¡Postúlate para participar!",
+      "event_date": "2025-06-25T18:00:00",
+      "preferred_genre": "Hip-Hop",
+      "tickets_link": "http://tickets.com/hiphop-festival",
+      "rehearsal_required": false
+    },
+    {
+      "event_id": 8,
+      "title": "Noche de Salsa",
+      "description": "Se buscan músicos de salsa para hacer bailar al público. ¡Postúlate y muestra tu talento!",
+      "event_date": "2025-06-12T20:00:00",
+      "preferred_genre": "Salsa",
+      "tickets_link": "http://tickets.com/salsa-night",
+      "rehearsal_required": false
+    },
+    {
+      "event_id": 9,
+      "title": "Festival de Música Indie",
+      "description": "¿Eres una banda o artista indie? Postúlate para mostrar tu talento en este festival.",
+      "event_date": "2025-07-05T19:00:00",
+      "preferred_genre": "Indie",
+      "tickets_link": "http://tickets.com/indie-festival",
+      "rehearsal_required": false
+    },
+    {
+      "event_id": 10,
+      "title": "Concierto de Blues",
+      "description": "Buscamos músicos de blues para una noche llena de emociones. ¡Postúlate ahora!",
+      "event_date": "2025-07-10T19:30:00",
+      "preferred_genre": "Blues",
+      "tickets_link": "http://tickets.com/blues-concert",
+      "rehearsal_required": false
+    },
+    {
+      "event_id": 11,
+      "title": "Festival de Música Country",
+      "description": "Invitamos a músicos de country a participar en este evento único. ¡Postúlate y sé parte!",
+      "event_date": "2025-07-15T18:00:00",
+      "preferred_genre": "Country",
+      "tickets_link": "http://tickets.com/country-festival",
+      "rehearsal_required": false
+    },
+    {
+      "event_id": 12,
+      "title": "Noche de Flamenco",
+      "description": "Se buscan artistas de flamenco para compartir su pasión en esta noche especial. ¡Postúlate!",
+      "event_date": "2025-07-20T20:00:00",
+      "preferred_genre": "Flamenco",
+      "tickets_link": "http://tickets.com/flamenco-night",
+      "rehearsal_required": true
     }
   ]
 }
