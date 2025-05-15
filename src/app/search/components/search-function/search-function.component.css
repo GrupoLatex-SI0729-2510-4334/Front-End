@@ -70,3 +70,6 @@ p {
   font-style: italic;
   text-align: center;
 }
+.bold-text {
+  font-weight: bold;
+}
