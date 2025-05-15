@@ -1,1 +1,20 @@
-<p>profile-function works!</p>
+<div class="title-content">
+  <h1>My Profile</h1>
+</div>
+
+<mat-card *ngIf="profile" class="profile-card">
+  <mat-card-header>
+    <div class="profile-container">
+      <img [src]="profile.image" alt="{{ profile.name }}" class="profile-image"/>
+      <div class="profile-details">
+        <mat-card-title><strong>{{ profile.name }}</strong></mat-card-title>
+        <mat-card-subtitle><strong>{{ profile.occupation }}</strong></mat-card-subtitle>
+        <p><strong>Email: </strong>{{ profile.email }}</p>
+        <p>{{ profile.biography }}</p>
+      </div>
+    </div>
+  </mat-card-header>
+  <mat-card-actions align="end">
+    <button mat-raised-button color="primary" (click)="enableEdit()">Edit profile</button>
+  </mat-card-actions>
+</mat-card>
