@@ -6,7 +6,7 @@ import { Event } from '../../model/event.entity';
 @Component({
   selector: 'app-search-function',
   standalone: true,
-  imports: [CommonModule], // Importa CommonModule aquí
+  imports: [CommonModule],
   templateUrl: './search-function.component.html',
   styleUrls: ['./search-function.component.css'],
 })
