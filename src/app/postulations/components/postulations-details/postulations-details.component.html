@@ -1,78 +1,98 @@
 <div class="profile-container">
   <div class="profile-header">
-    <h2>Datos para postular</h2>
+    <h2>Postular para: {{ eventTitle }}</h2>
   </div>
-
   <div class="profile-form-container">
     <div class="profile-form">
-
-      <div class="name-last-name">
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" value="" />
+      <form [formGroup]="postulationForm">
+        <div class="name-last-name">
+          <div class="form-group">
+            <label for="name">Nombre</label>
+            <input type="text" id="name" formControlName="name" />
+            <div *ngIf="postulationForm.get('name')?.invalid && postulationForm.get('name')?.touched" class="error">
+              El nombre es obligatorio.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Apellidos</label>
+            <input type="text" id="lastName" formControlName="lastName" />
+            <div *ngIf="postulationForm.get('lastName')?.invalid && postulationForm.get('lastName')?.touched" class="error">
+              Los apellidos son obligatorios.
+            </div>
+          </div>
         </div>
-
-        <div class="form-group">
-          <label for="last-names">Last Names</label>
-          <input type="text" id="last-names" value="" />
+        <div class="name-last-name">
+          <div class="form-group">
+            <label for="cellphone">Número de Teléfono</label>
+            <input type="text" id="cellphone" formControlName="cellphone" />
+            <div *ngIf="postulationForm.get('cellphone')?.invalid && postulationForm.get('cellphone')?.touched" class="error">
+              Ingresa un número de teléfono válido de 9 dígitos.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="DNI">DNI</label>
+            <input type="text" id="DNI" formControlName="DNI" />
+            <div *ngIf="postulationForm.get('DNI')?.invalid && postulationForm.get('DNI')?.touched" class="error">
+              Ingresa un DNI válido de 8 dígitos.
+            </div>
+          </div>
         </div>
-      </div>
-
-      <div class="name-last-name">
         <div class="form-group">
-          <label for="phone">Telephone Number</label>
-          <input type="text" id="phone" value="" />
+          <label for="address">Dirección</label>
+          <input type="text" id="address" formControlName="address" />
+          <div *ngIf="postulationForm.get('address')?.invalid && postulationForm.get('address')?.touched" class="error">
+            La dirección es obligatoria.
+          </div>
         </div>
-
         <div class="form-group">
-          <label for="dni">DNI</label>
-          <input type="text" id="dni" value="" />
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" />
+          <div *ngIf="postulationForm.get('email')?.invalid && postulationForm.get('email')?.touched" class="error">
+            Ingresa un email válido.
+          </div>
         </div>
-      </div>
-
-      <div class="form-group">
-        <label for="address">Address</label>
-        <input type="text" id="address" value="" />
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email</label>
-        <input type="email" id="email" value="" />
-      </div>
-
-      <div class="form-group">
-        <label for="password">Nombre de la banda o Nombre Artistico</label>
-        <input type="password" id="password" placeholder="Enter your Artistic Name" />
-        <button class="save-button" [routerLink]="['/postulations']" >Save</button>
-      </div>
-
+        <div class="form-group">
+          <label for="artisticName">Nombre de la banda o Nombre Artístico</label>
+          <input type="text" id="artisticName" formControlName="artisticName" placeholder="Ingresa tu Nombre Artístico" />
+          <div *ngIf="postulationForm.get('artisticName')?.invalid && postulationForm.get('artisticName')?.touched" class="error">
+            El nombre artístico es obligatorio.
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="cancel-button" (click)="cancel()">Cancelar</button>
+          <button class="save-button" (click)="savePostulation()">Enviar Postulación</button>
+        </div>
+      </form>
     </div>
-
     <div class="space-form-suscription">
     </div>
     <div class="left-boxes">
-
-
-
-
       <div class="subscription-box">
         <div class="conteiner-subscription-title">
-          <h3>Payment method</h3>
+          <h3>Evento seleccionado</h3>
         </div>
         <div class="subscription-details">
-
           <div class="info-payment">
-            <p>Credit/Debit Card</p>
-            <p>XXXX-XXXX-XXXX-6789</p>
-            <p>Expiration Date</p>
-            <p>07/30</p>
+            <p><strong>{{ eventTitle }}</strong></p>
+            <p *ngIf="isEditing">Ya has postulado a este evento.</p>
+            <p *ngIf="!isEditing">Complete el formulario para postular.</p>
           </div>
-          <button [routerLink]="['/payment-method']">Add Method</button>
-
         </div>
       </div>
-
+      <div class="subscription-box">
+        <div class="conteiner-subscription-title">
+          <h3>Método de pago</h3>
+        </div>
+        <div class="subscription-details">
+          <div class="info-payment">
+            <p>Tarjeta de Crédito/Débito</p>
+            <p>XXXX-XXXX-XXXX-6789</p>
+            <p>Fecha de Expiración</p>
+            <p>07/30</p>
+          </div>
+          <button [routerLink]="['/payment-method']">Agregar Método</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-

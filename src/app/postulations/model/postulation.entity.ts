@@ -1,17 +1,23 @@
 export class Postulation {
   id: number;
-  nombre: string;
-  ciudad: string;
-  genero: string;
-  rating: number;
-  imagen: string;
+  eventId: number;  // Añadido para vincular con el evento
+  name: string;
+  lastName: string;
+  DNI: string;
+  cellphone: string;
+  address: string;
+  email: string;
+  artisticName: string;
 
   constructor() {
     this.id = 0;
-    this.nombre = '';
-    this.ciudad = '';
-    this.genero = '';
-    this.rating = 0;
-    this.imagen = '';
+    this.eventId = 0;
+    this.name = '';
+    this.lastName = '';
+    this.DNI = '';
+    this.cellphone = '';
+    this.address = '';
+    this.email = '';
+    this.artisticName = '';
   }
 }

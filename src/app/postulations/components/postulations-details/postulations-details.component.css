@@ -1,4 +1,3 @@
-
 .profile-container {
   display: flex;
   flex-basis: content;
@@ -10,7 +9,6 @@
   border-radius: 10px;
   margin: auto;
   background-color: #1A1A1A;
-
 }
 
 .profile-header {
@@ -34,18 +32,16 @@
   background-color: #d1D1D1;
   padding: 30px;
   width: 800px;
-  height: 600px;
+  min-height: 600px;
 }
 
-.name-last-name{
+.name-last-name {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
 }
 
-.telefono-dni{
-  display: flex;
-  flex-direction: row;
-}
 .profile-form {
   display: flex;
   flex-direction: column;
@@ -55,63 +51,85 @@
 .form-group {
   display: flex;
   flex-direction: column;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .form-group label {
   margin-bottom: 5px;
   font-size: 14px;
+  font-weight: 500;
 }
 
 .form-group input {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
 .save-button {
   background-color: #DDB504;
   color: white;
-  padding: 12px;
+  padding: 12px 24px;
   border: none;
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  width: 100%;
-  margin-top: 20px;
   font-weight: bold;
+  flex: 1;
+  margin-left: 10px;
+}
+
+.cancel-button {
+  background-color: #f44336;
+  color: white;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  font-weight: bold;
+  flex: 1;
+  margin-right: 10px;
 }
 
 .save-button:hover {
   background-color: #ff9f33;
 }
 
-.space-form-suscription{
+.cancel-button:hover {
+  background-color: #d32f2f;
+}
+
+.space-form-suscription {
   padding: 30px;
 }
-.space-name-lastname{
-  padding: 10px;
-}
+
 .subscription-box {
   margin-bottom: 20px;
+  width: 250px;
 }
 
 .subscription-box h3 {
   font-weight: normal;
   font-size: 20px;
   text-align: center;
-  margin-bottom: 5px;
+  margin: 0;
+  padding: 10px 0;
 }
 
-.conteiner-subscription-title{
+.conteiner-subscription-title {
   background-color: #DDB504;
   color: white;
   padding: 5px;
-}
-
-.subs-team-paid {
-  display: flex;
-  justify-content: space-between;
 }
 
 .subscription-details {
@@ -120,36 +138,45 @@
   margin-top: 0px;
   padding: 20px;
 }
+
+.info-payment {
+  margin-bottom: 15px;
+}
+
+.info-payment p {
+  margin: 5px 0;
+}
+
 .subscription-details button {
   background-color: #DDB504;
   color: white;
   border: none;
   border-radius: 5px;
   width: 100%;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
 }
+
 .subscription-details button:hover {
-  background-color: #DDB504;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  width: 100%;
+  background-color: #ff9f33;
 }
 
-.payment-options {
-  margin-top: 20px;
+.error {
+  color: #d32f2f;
+  font-size: 0.9rem;
+  margin-top: 4px;
 }
-
-.payment-options .option {
+.postulations-container {
   display: flex;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.payment-options label {
-  margin-left: 10px;
-}
-.name-last-name{
-  display: flex;
-  flex-direction: row;
   justify-content: space-between;
+}
+
+.main-content {
+  flex: 3;
+}
+
+.saved-postulations {
+  flex: 1;
+  margin-left: 20px;
 }

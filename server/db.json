@@ -1,31 +1,30 @@
 {
   "postulations": [
     {
-      "banda_id": 1,
-      "nombre": "BTS",
-      "genero": "K-Pop",
-      "ciudad": "Seúl",
-      "rating": 2.8,
-      "imagen": "https://static.wikia.nocookie.net/kpop/images/2/2c/BTS_para_Take_Two.jpg/revision/latest?cb=20240306034358&path-prefix=es"
+      "id": 1,
+      "eventId": 3,
+      "name": "Daniel",
+      "lastName": "dfdffdd",
+      "cellphone": "121312331",
+      "DNI": "33333333",
+      "address": "San Miguel",
+      "email": "123@gmail.com",
+      "artisticName": "asdasadasdas",
+      "apiId": "v1"
     },
     {
-      "banda_id": 2,
-      "nombre": "Queen",
-      "genero": "Rock",
-      "ciudad": "Londres",
-      "rating": 5.0,
-      "imagen": ""
-    },
-    {
-      "banda_id": 3,
-      "nombre": "AC/DC",
-      "genero": "Hard Rock",
-      "ciudad": "Estados Unidos",
-      "rating": 4.8,
-      "imagen": ""
+      "id": 2,
+      "eventId": 3,
+      "name": "Joaquin Pedraza",
+      "lastName": "qwwqw",
+      "cellphone": "123134111",
+      "DNI": "12123213",
+      "address": "San Isidro",
+      "email": "joaquin@gmail.com",
+      "artisticName": "wqwqwwqwq",
+      "apiId": "v1"
     }
   ],
-
   "profiles": [
     {
       "id": 1,
@@ -147,6 +146,42 @@
       "rehearsal_required": true
     }
   ],
-
-  "evaluations": []
+  "evaluations": [
+    {
+      "eventId": 1,
+      "rating": 2,
+      "comment": "fdfdsfd",
+      "checklist": {
+        "punctualPayment": false,
+        "goodCommunication": false,
+        "respectedContract": false
+      },
+      "apiId": "v1",
+      "id": 1
+    },
+    {
+      "eventId": 2,
+      "rating": 4,
+      "comment": "sdasad",
+      "checklist": {
+        "punctualPayment": false,
+        "goodCommunication": false,
+        "respectedContract": false
+      },
+      "apiId": "v1",
+      "id": 2
+    },
+    {
+      "eventId": 3,
+      "rating": 3,
+      "comment": "wesd",
+      "checklist": {
+        "punctualPayment": false,
+        "goodCommunication": false,
+        "respectedContract": false
+      },
+      "apiId": "v1",
+      "id": 3
+    }
+  ]
 }

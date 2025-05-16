@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {Postulation} from '../../model/postulation.entity';
-import {PostulationService} from '../../services/postulation.service';
-import {SearchService} from '../../../search/services/search.service';
 import {FormsModule} from '@angular/forms';
-import {NgForOf, NgIf} from '@angular/common';
-import {MatCard} from '@angular/material/card';
-import {MatIcon} from '@angular/material/icon';
+import {MatCard, MatCardContent, MatCardTitle} from '@angular/material/card';
 import {RouterLink} from '@angular/router';
 
 
@@ -17,14 +12,17 @@ import {RouterLink} from '@angular/router';
     FormsModule,
 
 
-
     RouterLink,
 
 
-    MatCard
+    MatCard,
+    MatCardTitle,
+    MatCardContent
   ]
 })
 export class PostulationsFunctionComponent  {
 
 }
+
+
 
