@@ -1,0 +1,39 @@
+/* Contenedor principal */
+.evaluations-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  padding: 16px;
+}
+
+/* Botón en la esquina superior derecha */
+.view-evaluated-events {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+}
+
+/* Estilo de las tarjetas */
+.event-card {
+  margin-bottom: 16px;
+  width: 100%;
+  max-width: 600px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.event-card mat-card {
+  width: 100%;
+}
+
+.event-card mat-card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.event-card mat-card-content p {
+  margin: 8px 0;
+}

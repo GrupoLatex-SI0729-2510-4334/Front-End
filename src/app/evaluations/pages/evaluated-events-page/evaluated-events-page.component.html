@@ -1,0 +1,29 @@
+<div class="evaluated-events-container">
+  <div class="back-button">
+    <button mat-raised-button color="accent" routerLink="/evaluations">Regresar</button>
+  </div>
+
+  <div *ngFor="let event of evaluatedEvents" class="evaluated-event-card">
+    <mat-card>
+      <mat-card-title>{{ event.title }}</mat-card-title>
+      <mat-card-content>
+        <p><strong>Descripción:</strong> {{ event.description }}</p>
+        <p><strong>Fecha:</strong> {{ event.event_date | date: 'd MMMM, yyyy - HH:mm' }}</p>
+        <p><strong>Calificación:</strong> {{ event.evaluation.rating }}</p>
+        <p><strong>Comentario:</strong> {{ event.evaluation.comment }}</p>
+        <div>
+          <strong>Checklist:</strong>
+          <ul>
+            <li *ngIf="event.evaluation.checklist.punctualPayment">Pago puntual</li>
+            <li *ngIf="event.evaluation.checklist.goodCommunication">Buena comunicación</li>
+            <li *ngIf="event.evaluation.checklist.respectedContract">Contrato respetado</li>
+          </ul>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" (click)="editEvaluation(event.evaluation.id)">Editar</button>
+        <button mat-raised-button color="warn" (click)="deleteEvaluation(event.evaluation.id)">Borrar</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

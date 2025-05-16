@@ -1,4 +1,31 @@
 {
+  "postulations": [
+    {
+      "banda_id": 1,
+      "nombre": "BTS",
+      "genero": "K-Pop",
+      "ciudad": "Seúl",
+      "rating": 2.8,
+      "imagen": "https://static.wikia.nocookie.net/kpop/images/2/2c/BTS_para_Take_Two.jpg/revision/latest?cb=20240306034358&path-prefix=es"
+    },
+    {
+      "banda_id": 2,
+      "nombre": "Queen",
+      "genero": "Rock",
+      "ciudad": "Londres",
+      "rating": 5.0,
+      "imagen": ""
+    },
+    {
+      "banda_id": 3,
+      "nombre": "AC/DC",
+      "genero": "Hard Rock",
+      "ciudad": "Estados Unidos",
+      "rating": 4.8,
+      "imagen": ""
+    }
+  ],
+
   "profiles": [
     {
       "id": 1,
