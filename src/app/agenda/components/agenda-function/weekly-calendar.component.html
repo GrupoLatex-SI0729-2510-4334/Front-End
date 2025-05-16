@@ -19,4 +19,12 @@
       {{ formatDate(date) }}
     </div>
   </div>
+
+  <div class="date-list">
+    <ul>
+      <li *ngFor="let date of weekDates">
+        {{ date | date: 'fullDate' }}
+      </li>
+    </ul>
+  </div>
 </div>

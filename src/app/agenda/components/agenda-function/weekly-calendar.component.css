@@ -37,6 +37,16 @@
 }
 
 .selected {
-  background-color: #007bff;
+  background-color: #0051ff;
   color: white;
+}
+
+.date-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.date-list li {
+  margin: 5px 0;
+  font-size: 14px;
 }
