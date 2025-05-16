@@ -2,22 +2,21 @@ import { Component,OnInit  } from '@angular/core';
 import {DatePipe, NgForOf, NgIf} from '@angular/common';
 import { Event } from '../../model/dashboard.entity';
 import { DashboardService } from '../../../dashboard/services/dashboard.service';
-import {RouterOutlet} from '@angular/router';
-import {MatToolbar} from '@angular/material/toolbar';
+import {RouterLink, RouterOutlet} from '@angular/router';
 import {WeeklyCalendarComponent} from './weekly-calendar.component';
 
 @Component({
-  selector: 'app-agenda-function',
   imports: [
     DatePipe,
     RouterOutlet,
-    MatToolbar,
     WeeklyCalendarComponent,
     NgForOf,
-    NgIf
+    NgIf,
+    RouterLink
   ],
-  templateUrl: './agenda-function.component.html',
-  styleUrl: './agenda-function.component.css'
+  selector: 'app-agenda-function',
+  styleUrl: './agenda-function.component.css',
+  templateUrl: './agenda-function.component.html'
 })
 export class AgendaFunctionComponent implements OnInit{
   events: Event[] = [];
@@ -37,9 +36,23 @@ export class AgendaFunctionComponent implements OnInit{
     this.eventsFiltered = this.events.filter(event => {
       const eventDate = new Date(event.event_date);
       return eventDate.getFullYear() === date.getFullYear() &&
-             eventDate.getMonth() === date.getMonth() &&
-             eventDate.getDate() === date.getDate();
+        eventDate.getMonth() === date.getMonth() &&
+        eventDate.getDate() === date.getDate();
     });
   }
-}
+  onFotoClick(eventId: number): void {
+    console.log(`Abrir galería para el evento con ID: ${eventId}`);
+    // Lógica personalizada para manejar fotos
+  }
 
+  onDocumentoClick(eventId: number): void {
+    console.log(`Abrir documentos para el evento con ID: ${eventId}`);
+    // Lógica personalizada para manejar documentos
+  }
+
+  onConfiguracionClick(eventId: number): void {
+    console.log(`Abrir configuración para el evento con ID: ${eventId}`);
+    // Lógica personalizada para manejar configuración
+  }
+
+}

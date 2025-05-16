@@ -6,19 +6,21 @@ import {
   format,
   isSameDay
 } from 'date-fns';
-import {NgForOf} from '@angular/common';
+import {DatePipe, NgForOf} from '@angular/common';
 
 @Component({
   selector: 'app-weekly-calendar',
   templateUrl: './weekly-calendar.component.html',
   imports: [
-    NgForOf
+    NgForOf,
+    DatePipe
   ],
   styleUrls: ['./weekly-calendar.component.css']
 })
 export class WeeklyCalendarComponent implements OnInit {
   @Output() dateSelected = new EventEmitter<Date>();
   currentWeekStart: Date = startOfWeek(new Date(), { weekStartsOn: 1 });
+  currentDate: Date = new Date();
   selectedDate: Date | null = null;
   weekDates: Date[] = [];
   weekDays = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
@@ -29,8 +31,10 @@ export class WeeklyCalendarComponent implements OnInit {
 
   generateWeek(): void {
     this.weekDates = [];
+    const startOfWeek = new Date(this.currentDate);
+    startOfWeek.setDate(this.currentDate.getDate() - this.currentDate.getDay());
     for (let i = 0; i < 7; i++) {
-      const date = new Date(this.currentWeekStart);
+      const date = addDays(this.currentWeekStart, i);
       date.setDate(this.currentWeekStart.getDate() + i);
       this.weekDates.push(date);
     }
