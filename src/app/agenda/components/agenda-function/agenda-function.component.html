@@ -5,7 +5,10 @@
     </header>
 
     <section id="calendar-controls">
-      <app-weekly-calendar (dateSelected)="onDateSelected($event)"></app-weekly-calendar>
+      <app-weekly-calendar
+        [events]="events"
+        (dateSelected)="onDateSelected($event)"
+      ></app-weekly-calendar>
     </section>
 
 <section id="agenda" class="eventos-confirmados">
@@ -17,11 +20,6 @@
     <div class="etiquetas">
       <span class="badge" *ngIf="event.rehearsal_required">Ensayo requerido</span>
       <span class="badge">{{ event.preferred_genre }}</span>
-    </div>
-    <div class="acciones">
-      <button  (click)="'/foto'">📷</button>
-      <button (click)="'/documento'">📄</button>
-      <button (click)="'/configuracion'">⚙️</button>
     </div>
   </div>
 </section>

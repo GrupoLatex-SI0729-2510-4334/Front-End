@@ -1,0 +1,46 @@
+.event-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  padding: 20px;
+}
+
+mat-card {
+  width: 300px;
+  border: 1px solid #d4af37;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+mat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+mat-card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+mat-card-subtitle {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+mat-card-content p {
+  font-size: 0.95rem;
+  color: #444;
+}
+
+mat-card-actions a {
+  color: #d4af37;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+mat-card-actions a:hover {
+  text-decoration: underline;
+}

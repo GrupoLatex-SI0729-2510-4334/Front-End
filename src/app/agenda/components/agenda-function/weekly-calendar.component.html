@@ -17,6 +17,8 @@
       (click)="onDateClick(date)"
     >
       {{ formatDate(date) }}
+      <span *ngIf="hasEvent(date)" class="event-indicator">Evento disponible</span>
+      <span *ngIf="!hasEvent(date)" class="event-indicator">Sin eventos</span>
     </div>
   </div>
 
@@ -24,6 +26,8 @@
     <ul>
       <li *ngFor="let date of weekDates">
         {{ date | date: 'fullDate' }}
+        <span *ngIf="hasEvent(date)">- Evento disponible</span>
+        <span *ngIf="!hasEvent(date)">- Sin eventos</span>
       </li>
     </ul>
   </div>

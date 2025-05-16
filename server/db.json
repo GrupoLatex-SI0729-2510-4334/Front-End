@@ -3,36 +3,23 @@
     {
       "id": 1,
       "eventId": 3,
-      "name": "Daniel",
-      "lastName": "dfdffdd",
-      "cellphone": "121312331",
-      "DNI": "33333333",
-      "address": "San Miguel",
-      "email": "123@gmail.com",
-      "artisticName": "asdasadasdas",
-      "apiId": "v1"
-    },
-    {
-      "id": 2,
-      "eventId": 3,
-      "name": "Joaquin Pedraza",
-      "lastName": "qwwqw",
-      "cellphone": "123134111",
-      "DNI": "12123213",
+      "name": "Celeste",
+      "lastName": "Ramos",
+      "cellphone": "999888777",
+      "DNI": "77766655",
       "address": "San Isidro",
-      "email": "joaquin@gmail.com",
-      "artisticName": "wqwqwwqwq",
-      "apiId": "v1"
+      "email": "cele@gmail.com",
+      "artisticName": "DJ Skyblue"
     }
   ],
   "profiles": [
     {
       "id": 1,
       "type": "Musician",
-      "name": "DJ Shadow",
+      "name": "DJ Shadow.",
       "email": "dj.shadow@gmail.com",
       "image": "https://i.discogs.com/nUM4uZES5D-emLU_vWnqUMFt-ZoKwg17toq8b5f2XXI/rs:fit/g:sm/q:90/h:455/w:367/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQ0Nzgt/MTU4NDUzMTkxNy04/MjMwLmpwZWc.jpeg",
-      "occupation": "Electric Music Producer",
+      "occupation": "Electric Music Producer.",
       "biography": "Electronic music producer with over 10 years of experience. Specializing in house, techno, and experimental electronic music."
     }
   ],
@@ -149,39 +136,14 @@
   "evaluations": [
     {
       "eventId": 1,
-      "rating": 2,
-      "comment": "fdfdsfd",
+      "rating": 5,
+      "comment": "El concierto cumplió con lo establecido.",
       "checklist": {
-        "punctualPayment": false,
-        "goodCommunication": false,
-        "respectedContract": false
+        "punctualPayment": true,
+        "goodCommunication": true,
+        "respectedContract": true
       },
-      "apiId": "v1",
       "id": 1
-    },
-    {
-      "eventId": 2,
-      "rating": 4,
-      "comment": "sdasad",
-      "checklist": {
-        "punctualPayment": false,
-        "goodCommunication": false,
-        "respectedContract": false
-      },
-      "apiId": "v1",
-      "id": 2
-    },
-    {
-      "eventId": 3,
-      "rating": 3,
-      "comment": "wesd",
-      "checklist": {
-        "punctualPayment": false,
-        "goodCommunication": false,
-        "respectedContract": false
-      },
-      "apiId": "v1",
-      "id": 3
     }
   ]
 }

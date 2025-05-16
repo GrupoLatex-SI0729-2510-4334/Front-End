@@ -1,23 +1,25 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import {
   startOfWeek,
-  addWeeks,
   addDays,
   format,
   isSameDay
 } from 'date-fns';
-import {DatePipe, NgForOf} from '@angular/common';
+import {DatePipe, NgForOf, NgIf} from '@angular/common';
+import { Event } from '../../model/dashboard.entity';
 
 @Component({
   selector: 'app-weekly-calendar',
   templateUrl: './weekly-calendar.component.html',
   imports: [
     NgForOf,
-    DatePipe
+    DatePipe,
+    NgIf
   ],
   styleUrls: ['./weekly-calendar.component.css']
 })
 export class WeeklyCalendarComponent implements OnInit {
+  @Input() events: Event[] = [];
   @Output() dateSelected = new EventEmitter<Date>();
   currentWeekStart: Date = startOfWeek(new Date(), { weekStartsOn: 1 });
   currentDate: Date = new Date();
@@ -31,11 +33,8 @@ export class WeeklyCalendarComponent implements OnInit {
 
   generateWeek(): void {
     this.weekDates = [];
-    const startOfWeek = new Date(this.currentDate);
-    startOfWeek.setDate(this.currentDate.getDate() - this.currentDate.getDay());
     for (let i = 0; i < 7; i++) {
       const date = addDays(this.currentWeekStart, i);
-      date.setDate(this.currentWeekStart.getDate() + i);
       this.weekDates.push(date);
     }
   }
@@ -66,5 +65,12 @@ export class WeeklyCalendarComponent implements OnInit {
 
   isSelected(date: Date): boolean {
     return this.selectedDate ? isSameDay(date, this.selectedDate) : false;
+  }
+
+  hasEvent(date: Date): boolean {
+    return this.events.some(event => {
+      const eventDate = new Date(event.event_date);
+      return isSameDay(eventDate, date);
+    });
   }
 }
