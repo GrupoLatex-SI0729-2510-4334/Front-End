@@ -1,0 +1,58 @@
+<div class="form-container">
+  <div class="login-box">
+    <div class="logo">
+      <img ngSrc="logo-oscuro.png" alt="Toca Aquí" height="420" width="820"/>
+    </div>
+    <h2 class="text-center">Bienvenido</h2>
+
+    <div class="p-field text-center mb-4">
+      <label class="block mb-2 text-left">Selecciona tu rol</label>
+      <div class="role-buttons">
+        <button
+          mat-raised-button
+          color="primary"
+          [class.outlined]="selectedRole !== 'Musician'"
+          [class.selected]="selectedRole === 'Musician'"
+          (click)="setRole('Musician')"
+        >
+          Músico / Banda
+        </button>
+        <button
+          mat-raised-button
+          color="primary"
+          [class.outlined]="selectedRole !== 'Promoter'"
+          [class.selected]="selectedRole === 'Promoter'"
+          (click)="setRole('Promoter')"
+        >
+          Promotor / Espacio
+        </button>
+      </div>
+    </div>
+
+    <form (ngSubmit)="handleRegister()" #registerForm="ngForm" class="p-fluid">
+      <div class="p-field mb-3">
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Nombre</mat-label>
+          <input matInput [(ngModel)]="name" name="name" required />
+        </mat-form-field>
+      </div>
+
+      <div class="p-field mb-3">
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Correo electrónico</mat-label>
+          <input matInput [(ngModel)]="email" name="email" required />
+        </mat-form-field>
+      </div>
+
+      <div class="p-field mb-4">
+        <mat-form-field appearance="fill" class="w-full">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" [(ngModel)]="password" name="password" required />
+        </mat-form-field>
+      </div>
+
+      <button mat-raised-button color="primary" class="w-full" type="button" (click)="handleRegister()">Registrarse</button>
+      <button mat-raised-button color="accent" class="w-full mt-2" type="button" (click)="handleLogin()">Iniciar sesión</button>
+    </form>
+  </div>
+</div>
