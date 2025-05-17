@@ -16,6 +16,10 @@
     <mat-label>Biography</mat-label>
     <textarea matInput [(ngModel)]="profile.biography"></textarea>
   </mat-form-field>
+  <mat-form-field appearance="fill">
+    <mat-label>Image URL</mat-label>
+    <input matInput [(ngModel)]="profile.image" />
+  </mat-form-field>
 </mat-dialog-content>
 <mat-dialog-actions align="end">
   <button mat-button class="cancel-button" (click)="onCancel()">Cancel</button>

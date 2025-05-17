@@ -1,8 +1,9 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav mode="side" opened>
+  <mat-sidenav *ngIf="isLoggedIn && showSidebar" mode="side" opened>
     <app-sidebar></app-sidebar>
   </mat-sidenav>
   <mat-sidenav-content>
-    <router-outlet></router-outlet>
+    <app-login-page *ngIf="!isLoggedIn" (loginSuccess)="onLoginSuccess()"></app-login-page>
+    <router-outlet *ngIf="isLoggedIn || !showSidebar"></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

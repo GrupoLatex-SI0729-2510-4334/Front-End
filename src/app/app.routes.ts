@@ -12,16 +12,19 @@ import { EvaluatedEventsPageComponent } from './evaluations/pages/evaluated-even
 import {
   PostulationsDetailsComponent
 } from './postulations/components/postulations-details/postulations-details.component';
+import {LoginPageComponent} from './login/pages/login-page/login-page.component';
+import {BlankPageComponent} from './login/pages/blank-page/blank-page.component';
 
 export const routes: Routes = [
+  { path: '', component: LoginPageComponent },
   { path: 'dashboard', component: HomePageComponent },
   { path: 'search', component: SearchPageComponent },
   { path: 'profile', component: ProfilePageComponent },
+  { path: 'blank', component: BlankPageComponent },
   { path: 'postulations', component: PostulationsPageComponent },
   { path: 'evaluations', component: EvaluationsPageComponent },
   { path: 'evaluations/:evaluationId', component: EvaluationsFunctionComponent },
   { path: 'evaluated-events', component: EvaluatedEventsPageComponent },
   { path: 'agenda', component: AgendaPageComponent },
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'postulations-details', component: PostulationsDetailsComponent }
 ];

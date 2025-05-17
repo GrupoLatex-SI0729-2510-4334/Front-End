@@ -3,6 +3,7 @@ export class Profile {
   type: string;
   name: string;
   email: string;
+  password: string;
   image: string;
   occupation: string;
   biography: string;
@@ -12,6 +13,7 @@ export class Profile {
     this.type = '';
     this.name = '';
     this.email = '';
+    this.password = '';
     this.image = '';
     this.occupation = '';
     this.biography = '';

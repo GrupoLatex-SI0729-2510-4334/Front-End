@@ -6,20 +6,40 @@ import { ProfilesApiService } from '../../services/profiles-api.service';
 import { MatButtonModule } from '@angular/material/button';
 import {NgIf} from '@angular/common';
 import { ProfileEditDialogComponent } from '../profile-edit-dialog/profile-edit-dialog.component';
+import {Router} from '@angular/router';
+import {MatDivider} from '@angular/material/divider';
 
 @Component({
   selector: 'app-profile-function',
-  imports: [MatCardModule, MatButtonModule, NgIf],
+  imports: [MatCardModule, MatButtonModule, NgIf, MatDivider],
   templateUrl: './profile-function.component.html',
   styleUrl: './profile-function.component.css'
 })
 export class ProfileFunctionComponent implements OnInit {
   profile!: Profile;
 
-  constructor(private profileService: ProfilesApiService, private dialog: MatDialog) {}
+  constructor(private profileService: ProfilesApiService, private dialog: MatDialog, private router: Router) {}
+
+  logout(): void {
+    localStorage.removeItem('loggedInUser');
+    this.router.navigate(['/blank']).then(() => {
+      setTimeout(() => {
+        window.location.reload();
+        this.router.navigate(['/']);
+      }, 500);
+    });
+  }
 
   ngOnInit(): void {
-    this.profileService.getProfileById(1).subscribe((profile) => this.profile = profile);
+    const savedUser = localStorage.getItem('loggedInUser');
+    if (savedUser) {
+      const currentUser = JSON.parse(savedUser) as Profile;
+      this.profileService.getProfileById(currentUser.id).subscribe((profile) => {
+        this.profile = profile;
+      });
+    } else {
+      this.router.navigate(['/']);
+    }
   }
 
   enableEdit(): void {

@@ -1,20 +1,15 @@
 import { Component } from '@angular/core';
-import {RouterOutlet} from '@angular/router';
+import {NavigationEnd, Router, RouterOutlet} from '@angular/router';
 import {MatSidenav, MatSidenavContent, MatSidenavContainer} from '@angular/material/sidenav';
 import {SidebarComponent} from './public/components/navbar/sidebar.component';
 import {MatIconModule} from '@angular/material/icon';
-import {MatCard, MatCardActions, MatCardContent, MatCardTitle} from '@angular/material/card';
-import {MatSlider} from '@angular/material/slider';
-import {MatCheckbox} from '@angular/material/checkbox';
-import {MatInput} from '@angular/material/input';
-import {MatButton} from '@angular/material/button';
-import {MatFormField} from '@angular/material/form-field';
-import {MatLabel} from '@angular/material/input';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import {LoginPageComponent} from './login/pages/login-page/login-page.component';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-root',
@@ -25,29 +20,40 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSidenavContent,
     SidebarComponent,
     MatIconModule,
-    MatCardTitle,
-    MatCard,
-    MatCardContent,
     ReactiveFormsModule,
-    MatFormField,
-    MatLabel,
-    MatFormField,
-    MatSlider,
-    MatFormField,
-    MatFormField,
-    MatCheckbox,
-    MatInput,
-    MatCardActions,
-    MatButton,
     MatSliderModule,
     MatCheckboxModule,
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
+    LoginPageComponent,
+    NgIf,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
+
 export class AppComponent {
   title = 'front-end';
+  isLoggedIn: boolean = false;
+  showSidebar: boolean = true;
+
+  constructor(private router: Router) {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.showSidebar = event.url !== '/blank';
+      }
+    });
+  }
+
+  ngOnInit(): void {
+    const savedUser = localStorage.getItem('loggedInUser');
+    if (savedUser) {
+      this.isLoggedIn = true;
+    }
+  }
+
+  onLoginSuccess(): void {
+    this.isLoggedIn = true;
+  }
 }

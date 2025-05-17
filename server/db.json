@@ -1,26 +1,35 @@
 {
-  "postulations": [
-    {
-      "id": 1,
-      "eventId": 3,
-      "name": "Celeste",
-      "lastName": "Ramos",
-      "cellphone": "999888777",
-      "DNI": "77766655",
-      "address": "San Isidro",
-      "email": "cele@gmail.com",
-      "artisticName": "DJ Skyblue"
-    }
-  ],
+  "postulations": [],
   "profiles": [
     {
       "id": 1,
       "type": "Musician",
-      "name": "DJ Shadow.",
+      "name": "DJ-Chow",
       "email": "dj.shadow@gmail.com",
-      "image": "https://i.discogs.com/nUM4uZES5D-emLU_vWnqUMFt-ZoKwg17toq8b5f2XXI/rs:fit/g:sm/q:90/h:455/w:367/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9BLTQ0Nzgt/MTU4NDUzMTkxNy04/MjMwLmpwZWc.jpeg",
-      "occupation": "Electric Music Producer.",
-      "biography": "Electronic music producer with over 10 years of experience. Specializing in house, techno, and experimental electronic music."
+      "image": "https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2022/11/16/andlfxdywbfsg6eoqaky/dj-dmandado-2021",
+      "occupation": "Electric Music Producer",
+      "biography": "Electronic music producer with over 10 years of experience. Specializing in house, techno, and experimental electronic music.",
+      "password": "1234"
+    },
+    {
+      "id": 2,
+      "type": "Musician",
+      "name": "Red",
+      "email": "dicabrerabuitron@gmail.com",
+      "password": "1234",
+      "image": "",
+      "occupation": "Softare Engineer",
+      "biography": "Hi! I love this course!"
+    },
+    {
+      "id": 3,
+      "type": "Promoter",
+      "name": "Yellow",
+      "email": "yello@gmail.com",
+      "password": "1234",
+      "image": "https://www.aboutespanol.com/thmb/Ei1zbhWEvYS7spa4O329uFMzi1s=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Color-Amarillo-56a036e53df78cafdaa08301.jpg",
+      "occupation": "Color",
+      "biography": "Hi! I am a color!"
     }
   ],
   "events": [
@@ -136,11 +145,11 @@
   "evaluations": [
     {
       "eventId": 1,
-      "rating": 5,
-      "comment": "El concierto cumplió con lo establecido.",
+      "rating": 4,
+      "comment": "Cumplió con todo lo requerido",
       "checklist": {
         "punctualPayment": true,
-        "goodCommunication": true,
+        "goodCommunication": false,
         "respectedContract": true
       },
       "id": 1
