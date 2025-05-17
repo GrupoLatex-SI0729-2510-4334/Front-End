@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  serverBaseUrl: 'http://localhost:3000/api/v1',
+  serverBaseUrl: 'https://fake-api-jl1d.onrender.com/api/v1',
   coursesEndpointPath: '/dashboard',
   profilesEndpointPath: '/profiles',
 };
