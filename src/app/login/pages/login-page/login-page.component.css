@@ -1,3 +1,9 @@
+div {
+  box-sizing: border-box;
+  max-height: 300px;
+  font-family: sans-serif;
+}
+
 .form-container {
   display: flex;
   height: 100vh;

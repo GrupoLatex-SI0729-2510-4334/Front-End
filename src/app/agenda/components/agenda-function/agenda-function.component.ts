@@ -2,17 +2,14 @@ import { Component,OnInit  } from '@angular/core';
 import {DatePipe, NgForOf, NgIf} from '@angular/common';
 import { Event } from '../../model/dashboard.entity';
 import { DashboardService } from '../../../dashboard/services/dashboard.service';
-import {RouterLink, RouterOutlet} from '@angular/router';
 import {WeeklyCalendarComponent} from './weekly-calendar.component';
 
 @Component({
   imports: [
     DatePipe,
-    RouterOutlet,
     WeeklyCalendarComponent,
     NgForOf,
-    NgIf,
-    RouterLink
+    NgIf
   ],
   selector: 'app-agenda-function',
   styleUrl: './agenda-function.component.css',
