@@ -5,24 +5,65 @@
     </header>
 
     <section id="calendar-controls">
-      <app-weekly-calendar
-        [events]="events"
-        (dateSelected)="onDateSelected($event)"
-      ></app-weekly-calendar>
+      <app-weekly-calendar [events]="events" (dateSelected)="onDateSelected($event)"></app-weekly-calendar>
     </section>
 
-<section id="agenda" class="eventos-confirmados">
-  <h3>Eventos Confirmados</h3>
-  <div *ngFor="let event of eventsFiltered" class="evento">
-    <strong>{{ event.title }}</strong><br />
-    <span>{{ event.event_date | date: 'd MMMM, yyyy - HH:mm' }}</span><br />
-    <span>{{ event.description }}</span><br />
-    <div class="etiquetas">
-      <span class="badge" *ngIf="event.rehearsal_required">Ensayo requerido</span>
-      <span class="badge">{{ event.preferred_genre }}</span>
-    </div>
-  </div>
-</section>
+    <section id="agenda" class="eventos-confirmados">
+      <h3>Eventos Confirmados</h3>
 
+      <!-- Filtros -->
+      <div id="filters">
+        <form (submit)="applyFilters(); $event.preventDefault()">
 
+          <mat-form-field appearance="outline">
+            <mat-label>Fecha</mat-label>
+            <input matInput [matDatepicker]="picker" [(ngModel)]="selectedDate" name="selectedDate" />
+            <mat-hint>Selecciona una fecha</mat-hint>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
 
+          <mat-form-field appearance="outline">
+            <mat-label>Género</mat-label>
+            <mat-select [(ngModel)]="selectedGenres" name="selectedGenres" multiple
+              (selectionChange)="onGenresChange()">
+              <mat-option value="todos">Todos</mat-option>
+              <mat-option *ngFor="let genre of genres" [value]="genre">{{ genre }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <button mat-button type="submit">Aplicar filtros</button>
+          <button mat-button type="button" (click)="resetFilters()">Restablecer filtros</button>
+        </form>
+      </div>
+
+      <!-- Mensaje cuando no hay eventos -->
+      <div *ngIf="noEventsMessage" class="no-events-message">
+        {{ noEventsMessage }}
+      </div>
+      <!-- Lista de eventos -->
+      <mat-card *ngFor="let event of pageEvents" class="evento">
+        <mat-card-title>{{ event.title }}</mat-card-title>
+        <mat-card-subtitle>{{ event.event_date | date: 'd MMMM, yyyy - HH:mm' }}</mat-card-subtitle>
+        <mat-card-content>
+          <p>{{ event.description }}</p>
+          <div class="etiquetas">
+            <span class="badge" *ngIf="event.rehearsal_required">Ensayo requerido</span>
+            <span class="badge">{{ event.preferred_genre }}</span>
+          </div>
+          <p><strong>Estado:</strong> {{ event.status || 'Confirmado' }}</p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-raised-button color="warn" [disabled]="event.status === 'Cancelado por el músico'"
+            (click)="cancelEvent(event)">Cancelar Evento</button>
+          <button mat-button (click)="onFotoClick(event.id)">Abrir galería</button>
+          <button mat-button (click)="onDocumentoClick(event.id)">Abrir documentos</button>
+          <button mat-button (click)="onConfiguracionClick(event.id)">Abrir configuración</button>
+        </mat-card-actions>
+      </mat-card>
+      <mat-paginator [length]="events.length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+        aria-label="Select page" (page)="onPageChange($event)">
+      </mat-paginator>
+    </section>
+  </main>
+</div>

@@ -4,7 +4,7 @@ import {AgendaFunctionComponent} from '../../components/agenda-function/agenda-f
 @Component({
   selector: 'app-agenda-page',
   imports: [
-    AgendaFunctionComponent
+    AgendaFunctionComponent,
   ],
   templateUrl: './agenda-page.component.html',
   styleUrl: './agenda-page.component.css'
