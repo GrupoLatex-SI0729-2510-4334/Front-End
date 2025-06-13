@@ -26,6 +26,6 @@ export const routes: Routes = [
   { path: 'evaluations/:evaluationId', component: EvaluationsFunctionComponent },
   { path: 'evaluated-events', component: EvaluatedEventsPageComponent },
   { path: 'agenda', component: AgendaPageComponent },
-  { path: 'postulations-details', component: PostulationsDetailsComponent },
+  { path: 'postulations-details', component: PostulationsDetailsComponent},
   {path: 'saved-postulations', component: SavedPostulationsComponent}
 ];
