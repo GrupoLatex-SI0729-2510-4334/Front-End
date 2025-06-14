@@ -9,6 +9,24 @@
       "image": "https://img.redbull.com/images/c_limit,w_1500,h_1000/f_auto,q_auto/redbullcom/2022/11/16/andlfxdywbfsg6eoqaky/dj-dmandado-2021",
       "occupation": "Electric Music Producer",
       "biography": "Electronic music producer with over 10 years of experience. Specializing in house, techno, and experimental electronic music.",
+      "portfolio": [
+        {
+          "title": "DJ Set at Electronic Festival",
+          "description": "Performed a live DJ set at the annual Electronic Music Festival, showcasing original tracks and remixes.",
+          "urlImage": "https://img.freepik.com/fotos-premium/dj-tocando-fiesta-dj-atras-tocando-club-luces-ai_985124-4333.jpg",
+          "type": "Album",
+          "url": "https://www.youtube.com/watch?v=ZrB2Fh9Z-GU",
+          "releasedAt": "2023-08-15"
+        },
+        {
+          "title": "Original Track Release",
+          "description": "Released an original track on a popular electronic music label, receiving positive reviews from critics.",
+          "urlImage": "https://th.bing.com/th/id/OIP.-T7zwTacNzg2ZX3BmgmxQAHaHa?pid=ImgDet&w=474&h=474&rs=1",
+          "type": "Single",
+          "url": "https://soundcloud.com/dj-chow/original-track",
+          "releasedAt": "2023-09-01"
+        }
+      ],
       "password": "1234"
     },
     {
@@ -19,7 +37,8 @@
       "password": "1234",
       "image": "",
       "occupation": "Softare Engineer",
-      "biography": "Hi! I love this course!"
+      "biography": "Hi! I love this course!",
+      "portfolio": []
     },
     {
       "id": 3,
@@ -40,7 +59,8 @@
       "event_date": "2025-05-20T20:00:00",
       "preferred_genre": "Rock",
       "tickets_link": "http://tickets.com/rock-concert",
-      "rehearsal_required": true
+      "rehearsal_required": true,
+      "portfolio": []
     },
     {
       "event_id": 2,
