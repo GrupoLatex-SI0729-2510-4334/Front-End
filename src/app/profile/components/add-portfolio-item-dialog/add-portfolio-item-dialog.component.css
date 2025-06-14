@@ -1,0 +1,20 @@
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.cancel-button {
+  background-color: #f44336;
+  color: white;
+  padding: 10px;
+  border-radius: 4px;
+  margin-right: 8px;
+}
+
+.add-item-button {
+  background-color: #e0a800;
+  color: black;
+  padding: 10px;
+  border-radius: 4px;
+  margin-left: 8px;
+}

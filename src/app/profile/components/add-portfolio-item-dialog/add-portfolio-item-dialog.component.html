@@ -1,0 +1,36 @@
+<h2 mat-dialog-title>Add to Portfolio</h2>
+<mat-dialog-content>
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Title</mat-label>
+    <input matInput [(ngModel)]="portfolioItem.title">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Description</mat-label>
+    <textarea matInput rows="3" [(ngModel)]="portfolioItem.description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>URL Image</mat-label>
+    <input matInput [(ngModel)]="portfolioItem.urlImage">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Type</mat-label>
+    <input matInput [(ngModel)]="portfolioItem.type">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>URL</mat-label>
+    <input matInput [(ngModel)]="portfolioItem.url">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="w-full">
+    <mat-label>Release Date</mat-label>
+    <input matInput type="date" [(ngModel)]="portfolioItem.releasedAt">
+  </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button class="cancel-button" (click)="onCancel()">Cancel</button>
+  <button mat-flat-button class="add-item-button" color="primary" (click)="onSave()">Add Item</button>
+</mat-dialog-actions>
