@@ -10,7 +10,9 @@ export class ProfileAssembler {
       email: resource.email,
       image: resource.image,
       occupation: resource.occupation,
-      biography: resource.biography
+      portfolio: resource.portfolio,
+      biography: resource.biography,
+      password: resource.password
     };
   }
 

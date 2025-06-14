@@ -9,5 +9,7 @@ export interface ProfilesResource {
   email: string;
   image: string;
   occupation: string;
+  portfolio: [];
   biography: string;
+  password: string;
 }
