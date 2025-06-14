@@ -1,0 +1,21 @@
+<div class="saved-postulations">
+  <mat-card class="saved-postulations-card">
+    <mat-card-title class="conteiner-subscription-title">Postulaciones Guardadas</mat-card-title>
+    <mat-card-content>
+      <div *ngIf="postulations.length === 0">
+        No tienes postulaciones guardadas.
+      </div>
+      <div *ngFor="let postulation of postulations" class="postulation-item">
+        <mat-card class="postulation-mat-card subscription-box">
+          <mat-card-title>{{ postulation.artisticName }}</mat-card-title>
+          <mat-card-content class="subscription-details">
+            <div>{{ postulation.name }} {{ postulation.lastName }}</div>
+            <div>{{ postulation.email }}</div>
+            <div>DNI: {{ postulation.DNI }}</div>
+            <div>Evento ID: {{ postulation.eventId }}</div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -3,6 +3,7 @@ import { EvaluationsEntity } from '../model/evaluations.entity';
 export class EvaluationsAssembler {
   static toEntity(data: any): EvaluationsEntity {
     return {
+      id: data.id,
       eventId: data.eventId,
       rating: data.rating,
       comment: data.comment,

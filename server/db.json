@@ -165,11 +165,11 @@
   "evaluations": [
     {
       "eventId": 1,
-      "rating": 4,
-      "comment": "Cumplió con todo lo requerido",
+      "rating": 5,
+      "comment": "Muy buen concierto, cumplió con lo prometido",
       "checklist": {
         "punctualPayment": true,
-        "goodCommunication": false,
+        "goodCommunication": true,
         "respectedContract": true
       },
       "id": 1
