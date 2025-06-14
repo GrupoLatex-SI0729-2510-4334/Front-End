@@ -1,0 +1,15 @@
+<mat-card class="portfolio-item-card" appearance="outlined">
+  <mat-card-header>
+    <mat-card-title>{{ portfolio.title }}</mat-card-title>
+  </mat-card-header>
+  <br>
+
+  <img mat-card-image [src]="portfolio.urlImage" alt="{{ portfolio.title }}" class="portfolio-image">
+
+  <mat-card-content>
+    <p>{{ portfolio.description }}</p>
+    <p><strong>Url:</strong> {{ portfolio.url }}</p>
+    <p><strong>Type:</strong> {{ portfolio.type }}</p>
+    <p><strong>Date:</strong> {{ portfolio.releasedAt }}</p>
+  </mat-card-content>
+</mat-card>
