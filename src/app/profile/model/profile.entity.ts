@@ -1,3 +1,5 @@
+import { Portfolio } from './portfolio.entity';
+
 export class Profile {
   id: number;
   type: string;
@@ -6,6 +8,7 @@ export class Profile {
   password: string;
   image: string;
   occupation: string;
+  portfolio: Portfolio[];
   biography: string;
 
   constructor() {
@@ -16,6 +19,7 @@ export class Profile {
     this.password = '';
     this.image = '';
     this.occupation = '';
+    this.portfolio = [];
     this.biography = '';
   }
 }

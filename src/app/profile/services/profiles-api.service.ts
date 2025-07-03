@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import {Observable, switchMap} from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { Profile } from '../model/profile.entity';
+import {Portfolio} from '../model/portfolio.entity';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +20,19 @@ export class ProfilesApiService {
 
   updateProfile(profile: Profile): Observable<Profile> {
     return this.http.put<Profile>(`${this.baseUrl}${this.profilesEndpoint}/${profile.id}`, profile);
+  }
+
+  addPortfolioItem(profileId: number, portfolioItem: Portfolio): Observable<Portfolio[]> {
+    return this.getProfileById(profileId).pipe(
+      switchMap((profile) => {
+        if (!profile.portfolio) {
+          profile.portfolio = [];
+        }
+        profile.portfolio.push(portfolioItem);
+        return this.updateProfile(profile).pipe(
+          switchMap(updated => [updated.portfolio])
+        );
+      })
+    );
   }
 }

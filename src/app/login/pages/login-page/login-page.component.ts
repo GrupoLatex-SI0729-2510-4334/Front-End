@@ -46,7 +46,8 @@ export class LoginPageComponent {
       password: this.password,
       image: '',
       occupation: '',
-      biography: ''
+      biography: '',
+      portfolio: []
     };
 
     this.loginService.register(newProfile, this.password).subscribe({

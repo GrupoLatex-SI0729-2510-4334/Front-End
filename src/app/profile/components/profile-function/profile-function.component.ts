@@ -56,4 +56,20 @@ export class ProfileFunctionComponent implements OnInit {
       }
     });
   }
+
+  updatePortfolio(newItem: any): void {
+    if (this.profile && this.profile.portfolio) {
+      this.profile.portfolio.push(newItem);
+
+      this.profileService.updateProfile(this.profile).subscribe({
+        next: (updatedProfile) => {
+          this.profile = updatedProfile; // Actualiza el perfil local con los datos del servidor
+          console.log('Portafolio actualizado:', this.profile.portfolio);
+        },
+        error: (err) => {
+          console.error('Error al actualizar el portafolio:', err);
+        }
+      });
+    }
+  }
 }

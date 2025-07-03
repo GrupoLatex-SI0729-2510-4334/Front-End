@@ -1,0 +1,10 @@
+<div class="portfolio-header">
+  <h2>Portfolio:</h2>
+  <button mat-button color="primary" class="add-item-portfolio-button" (click)="openAddDialog()">Add to Portfolio</button>
+</div>
+
+<div class="portfolio-container">
+  <div *ngFor="let item of portfolios; trackBy: trackByTitle" class="portfolio-item">
+    <app-portfolio-item [portfolio]="item"></app-portfolio-item>
+  </div>
+</div>

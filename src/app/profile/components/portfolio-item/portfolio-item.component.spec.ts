@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AgendaFunctionComponent } from './agenda-function.component';
 
+import { PortfolioItemComponent } from './portfolio-item.component';
 
-
-describe('AgendaFunctionComponent', () => {
-  let component: AgendaFunctionComponent;
-  let fixture: ComponentFixture<AgendaFunctionComponent>;
+describe('PortfolioItemComponent', () => {
+  let component: PortfolioItemComponent;
+  let fixture: ComponentFixture<PortfolioItemComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AgendaFunctionComponent]
+      imports: [PortfolioItemComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AgendaFunctionComponent);
+    fixture = TestBed.createComponent(PortfolioItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -22,4 +21,3 @@ describe('AgendaFunctionComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-

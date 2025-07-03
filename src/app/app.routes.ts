@@ -14,6 +14,7 @@ import {
 } from './postulations/components/postulations-details/postulations-details.component';
 import {LoginPageComponent} from './login/pages/login-page/login-page.component';
 import {BlankPageComponent} from './login/pages/blank-page/blank-page.component';
+import {SavedPostulationsComponent} from './postulations/components/saved-postulations/saved-postulations.component';
 
 export const routes: Routes = [
   { path: '', component: LoginPageComponent },
@@ -26,5 +27,7 @@ export const routes: Routes = [
   { path: 'evaluations/:evaluationId', component: EvaluationsFunctionComponent },
   { path: 'evaluated-events', component: EvaluatedEventsPageComponent },
   { path: 'agenda', component: AgendaPageComponent },
-  { path: 'postulations-details', component: PostulationsDetailsComponent }
+  { path: 'postulations-details', component: PostulationsDetailsComponent },
+  
+  {path: 'saved-postulations', component: SavedPostulationsComponent}
 ];

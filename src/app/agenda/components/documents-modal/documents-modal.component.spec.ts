@@ -1,19 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { AgendaFunctionComponent } from './agenda-function.component';
 
+import { DocumentsModalComponent } from './documents-modal.component';
 
-
-describe('AgendaFunctionComponent', () => {
-  let component: AgendaFunctionComponent;
-  let fixture: ComponentFixture<AgendaFunctionComponent>;
+describe('DocumentsModalComponent', () => {
+  let component: DocumentsModalComponent;
+  let fixture: ComponentFixture<DocumentsModalComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AgendaFunctionComponent]
+      imports: [DocumentsModalComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AgendaFunctionComponent);
+    fixture = TestBed.createComponent(DocumentsModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -22,4 +21,3 @@ describe('AgendaFunctionComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
