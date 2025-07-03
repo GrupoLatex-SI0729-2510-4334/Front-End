@@ -30,6 +30,26 @@
       "image": "https://www.aboutespanol.com/thmb/Ei1zbhWEvYS7spa4O329uFMzi1s=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Color-Amarillo-56a036e53df78cafdaa08301.jpg",
       "occupation": "Color",
       "biography": "Hi! I am a color!"
+    },
+    {
+      "id": 4,
+      "type": "Musician",
+      "name": "Celeste",
+      "email": "c@gmail.com",
+      "password": "1234",
+      "image": "",
+      "occupation": "",
+      "biography": ""
+    },
+    {
+      "id": 5,
+      "type": "Musician",
+      "name": "Broen",
+      "email": "b@gmail.com",
+      "password": "1234",
+      "image": "https://png.pngtree.com/png-clipart/20240712/original/pngtree-pop-art-dj-boy-comic-dj-music-artist-stock-png-image_15543150.png",
+      "occupation": "DJ",
+      "biography": "DJ de una extensa trayectoria."
     }
   ],
   "events": [

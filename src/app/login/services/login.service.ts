@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {map, Observable, switchMap} from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Profile } from '../../profile/model/profile.entity';
 import { environment } from '../../../environments/environment';
 
@@ -13,24 +13,23 @@ export class LoginService {
   constructor(private http: HttpClient) {}
 
   register(profile: Profile, password: string): Observable<void> {
-    return this.http.get<Profile[]>(`${this.baseUrl}/profiles`).pipe(
-      map((profiles) => {
-        const emailExists = profiles.some((p) => p.email === profile.email);
-        if (emailExists) {
-          throw new Error('El correo ya está registrado.');
-        }
-        return profile;
-      }),
-      switchMap(() => {
-        const payload = { ...profile, password };
-        return this.http.post<void>(`${this.baseUrl}/profiles`, payload);
-      })
-    );
+    return this.http.post<void>(`${this.baseUrl}/auth/register`, {
+      name: profile.name,
+      email: profile.email,
+      password: password,
+      role: profile.type
+    });
   }
 
-  login(email: string, password: string): Observable<Profile | null> {
-    return this.http.get<Profile[]>(`${this.baseUrl}/profiles`).pipe(
-      map((profiles) => profiles.find((p) => p.email === email && p.password === password) || null)
+  login(email: string, password: string): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/auth/login`, { email, password }).pipe(
+      map((response) => {
+        if (response && response.token) {
+          localStorage.setItem('token', response.token);
+          return response;
+        }
+        return null;
+      })
     );
   }
 }
