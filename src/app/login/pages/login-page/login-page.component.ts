@@ -61,8 +61,7 @@ export class LoginPageComponent {
       next: (profile) => {
         if (profile) {
           this.loginSuccess.emit();
-          localStorage.setItem('loggedInUser', JSON.stringify(profile));
-          this.router.navigate(['/dashboard']); // Redirige al dashboard
+          this.router.navigate(['/dashboard']);
         } else {
           alert('Credenciales incorrectas');
         }

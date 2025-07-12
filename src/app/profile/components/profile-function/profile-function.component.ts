@@ -1,13 +1,14 @@
 import { Component, OnInit } from '@angular/core';
+import { jwtDecode } from 'jwt-decode';
 import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 import { Profile } from '../../model/profile.entity';
 import { ProfilesApiService } from '../../services/profiles-api.service';
 import { MatButtonModule } from '@angular/material/button';
-import {NgIf} from '@angular/common';
+import { NgIf } from '@angular/common';
 import { ProfileEditDialogComponent } from '../profile-edit-dialog/profile-edit-dialog.component';
-import {Router} from '@angular/router';
-import {MatDivider} from '@angular/material/divider';
+import { Router } from '@angular/router';
+import { MatDivider } from '@angular/material/divider';
 
 @Component({
   selector: 'app-profile-function',
@@ -20,26 +21,42 @@ export class ProfileFunctionComponent implements OnInit {
 
   constructor(private profileService: ProfilesApiService, private dialog: MatDialog, private router: Router) {}
 
+  ngOnInit(): void {
+    const token = localStorage.getItem('token');
+    if (token) {
+      try {
+        const decoded: any = jwtDecode(token);
+        const email = decoded.email;
+        if (email) {
+          this.profileService.getProfileByEmail(email).subscribe({
+            next: (profile) => {
+              this.profile = profile;
+            },
+            error: () => {
+              alert('No se encontró tu perfil. Por favor, contacta al soporte.');
+            }
+          });
+        } else {
+          alert('Token inválido. Por favor, inicia sesión de nuevo.');
+          this.router.navigate(['/']);
+        }
+      } catch (e) {
+        alert('Token inválido. Por favor, inicia sesión de nuevo.');
+        this.router.navigate(['/']);
+      }
+    } else {
+      this.router.navigate(['/']);
+    }
+  }
+
   logout(): void {
-    localStorage.removeItem('loggedInUser');
+    localStorage.removeItem('token');
     this.router.navigate(['/blank']).then(() => {
       setTimeout(() => {
         window.location.reload();
         this.router.navigate(['/']);
       }, 500);
     });
-  }
-
-  ngOnInit(): void {
-    const savedUser = localStorage.getItem('loggedInUser');
-    if (savedUser) {
-      const currentUser = JSON.parse(savedUser) as Profile;
-      this.profileService.getProfileById(currentUser.id).subscribe((profile) => {
-        this.profile = profile;
-      });
-    } else {
-      this.router.navigate(['/']);
-    }
   }
 
   enableEdit(): void {
@@ -50,8 +67,14 @@ export class ProfileFunctionComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe((result: Profile | undefined) => {
       if (result) {
-        this.profileService.updateProfile(result).subscribe((updatedProfile) => {
-          this.profile = updatedProfile; // Actualiza el perfil local con los datos del servidor
+        this.profileService.updateProfile(result).subscribe(() => {
+          localStorage.removeItem('token');
+          this.router.navigate(['/blank']).then(() => {
+            setTimeout(() => {
+              window.location.reload();
+              this.router.navigate(['/']);
+            }, 500);
+          });
         });
       }
     });
@@ -63,7 +86,7 @@ export class ProfileFunctionComponent implements OnInit {
 
       this.profileService.updateProfile(this.profile).subscribe({
         next: (updatedProfile) => {
-          this.profile = updatedProfile; // Actualiza el perfil local con los datos del servidor
+          this.profile = updatedProfile;
           console.log('Portafolio actualizado:', this.profile.portfolio);
         },
         error: (err) => {

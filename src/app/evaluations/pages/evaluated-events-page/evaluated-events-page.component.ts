@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from '../../../../environments/environment';
 import {MatCard, MatCardActions, MatCardContent, MatCardTitle} from '@angular/material/card';
 import {DatePipe, NgForOf, NgIf} from '@angular/common';
@@ -22,11 +22,17 @@ import {Router, RouterLink} from '@angular/router';
   templateUrl: './evaluated-events-page.component.html',
   styleUrl: './evaluated-events-page.component.css'
 })
-
 export class EvaluatedEventsPageComponent implements OnInit {
   evaluatedEvents: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {}
+
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  }
 
   ngOnInit(): void {
     this.loadEvaluatedEvents();
@@ -38,9 +44,8 @@ export class EvaluatedEventsPageComponent implements OnInit {
 
   deleteEvaluation(evaluationId: number): void {
     if (confirm('¿Estás seguro de que deseas borrar esta evaluación?')) {
-      this.http.delete(`${environment.serverBaseUrl}/evaluations/${evaluationId}`).subscribe({
+      this.http.delete(`${environment.serverBaseUrl}/evaluations/${evaluationId}`, { headers: this.getAuthHeaders() }).subscribe({
         next: () => {
-          // Actualizar la lista local eliminando el evento evaluado correspondiente
           this.evaluatedEvents = this.evaluatedEvents.filter(event => event.evaluation.id !== evaluationId);
           alert('Evaluación eliminada correctamente.');
         },
@@ -53,11 +58,15 @@ export class EvaluatedEventsPageComponent implements OnInit {
   }
 
   loadEvaluatedEvents(): void {
-    this.http.get(`${environment.serverBaseUrl}/events`).subscribe((events: any) => {
-      this.http.get(`${environment.serverBaseUrl}/evaluations`).subscribe((evaluations: any) => {
-        this.evaluatedEvents = events
+    this.http.get(`${environment.serverBaseUrl}/events`, { headers: this.getAuthHeaders() }).subscribe((events: any) => {
+      const mappedEvents = events.map((e: any) => ({
+        ...e,
+        id: e.id ?? e.eventId ?? e.event_id
+      }));
+      this.http.get(`${environment.serverBaseUrl}/evaluations`, { headers: this.getAuthHeaders() }).subscribe((evaluations: any) => {
+        this.evaluatedEvents = mappedEvents
           .map((event: any) => {
-            const evaluation = evaluations.find((e: any) => e.eventId === event.event_id);
+            const evaluation = evaluations.find((e: any) => e.eventId === event.id);
             return evaluation ? { ...event, evaluation } : null;
           })
           .filter((event: any) => event !== null);

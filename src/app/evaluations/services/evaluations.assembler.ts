@@ -20,7 +20,9 @@ export class EvaluationsAssembler {
       eventId: entity.eventId,
       rating: entity.rating,
       comment: entity.comment,
-      checklist: entity.checklist,
+      punctualPayment: entity.checklist.punctualPayment,
+      goodCommunication: entity.checklist.goodCommunication,
+      respectedContract: entity.checklist.respectedContract,
     };
   }
 }

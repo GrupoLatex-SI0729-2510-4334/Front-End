@@ -1,5 +1,5 @@
 export class EvaluationsEntity {
-  id!: number; // Propiedad agregada
+  id!: number;
   eventId!: number;
   rating!: number;
   comment!: string;

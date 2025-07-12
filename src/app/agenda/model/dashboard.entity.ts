@@ -6,7 +6,7 @@ export class Event {
   preferred_genre: string;
   tickets_link: string;
   rehearsal_required: boolean;
-  genre: string; // Agregar esta propiedad
+  genre: string;
   status: string;
 
   constructor() {

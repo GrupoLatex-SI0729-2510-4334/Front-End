@@ -28,6 +28,7 @@ export const routes: Routes = [
   { path: 'evaluated-events', component: EvaluatedEventsPageComponent },
   { path: 'agenda', component: AgendaPageComponent },
   { path: 'postulations-details', component: PostulationsDetailsComponent },
-  
+  { path: 'evaluations/new', component: EvaluationsFunctionComponent },
+
   {path: 'saved-postulations', component: SavedPostulationsComponent}
 ];

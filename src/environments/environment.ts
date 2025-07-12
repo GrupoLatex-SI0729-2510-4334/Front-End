@@ -1,6 +1,6 @@
 export const environment = {
   production: true,
-  serverBaseUrl: 'http://localhost:8080/api/v1',
+  serverBaseUrl: 'https://back-end-1-ttec.onrender.com/api/v1',
   coursesEndpointPath: '/',
   profilesEndpointPath: '/profiles',
 };

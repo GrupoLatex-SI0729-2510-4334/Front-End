@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { switchMap } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Profile } from '../../profile/model/profile.entity';

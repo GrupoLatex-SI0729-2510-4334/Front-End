@@ -42,15 +42,15 @@ export class AppComponent {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.showSidebar = event.url !== '/blank';
+        const token = localStorage.getItem('token');
+        this.isLoggedIn = !!token;
       }
     });
   }
 
   ngOnInit(): void {
-    const savedUser = localStorage.getItem('loggedInUser');
-    if (savedUser) {
-      this.isLoggedIn = true;
-    }
+    const token = localStorage.getItem('token');
+    this.isLoggedIn = !!token;
   }
 
   onLoginSuccess(): void {

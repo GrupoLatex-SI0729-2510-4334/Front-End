@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from '@angular/forms';
 import {MatCard, MatCardActions, MatCardContent, MatCardTitle} from '@angular/material/card';
 import {MatCheckbox} from '@angular/material/checkbox';
@@ -39,97 +39,146 @@ import {environment} from '../../../../environments/environment';
 })
 
 export class EvaluationsFunctionComponent implements OnInit {
-  evaluationForm: FormGroup;
-  eventTitle: string | undefined;
-  eventId: number | undefined;
-  isEditing: boolean = false;
-  evaluationId: number | undefined;
+  evaluationForm!: FormGroup;
+  eventTitle: string = '';
+  eventId?: number;
+  evaluationId?: number;
+  isEditMode: boolean = false;
 
   constructor(
-    private route: ActivatedRoute,
     private fb: FormBuilder,
-    private evaluationsService: EvaluationsServices,
-    private http: HttpClient,
+    private route: ActivatedRoute,
     private router: Router,
-    private dialog: MatDialog
-  ) {
+    private http: HttpClient,
+    private evaluationsService: EvaluationsServices
+  ) {}
+
+  private getAuthHeaders(): HttpHeaders {
+    const token = localStorage.getItem('token');
+    return new HttpHeaders({
+      'Authorization': `Bearer ${token}`
+    });
+  }
+
+  ngOnInit(): void {
     this.evaluationForm = this.fb.group({
-      rating: [0, [Validators.required, Validators.min(1)]],
+      rating: [1, [Validators.required, Validators.min(1)]],
       comment: ['', Validators.required],
       checklist: this.fb.group({
         punctualPayment: [false],
         goodCommunication: [false],
-        respectedContract: [false],
-      }),
+        respectedContract: [false]
+      })
+    });
+
+    this.route.paramMap.subscribe(params => {
+      const evaluationId = params.get('evaluationId');
+      if (evaluationId === 'new') {
+        this.route.queryParamMap.subscribe(queryParams => {
+          const eventIdParam = queryParams.get('eventId');
+          if (eventIdParam) {
+            this.eventId = Number(eventIdParam);
+            this.http.get<any[]>(`${environment.serverBaseUrl}/events`, { headers: this.getAuthHeaders() })
+              .subscribe(events => {
+                const event = events.find(e => Number(e.id) === this.eventId);
+                this.eventTitle = event ? event.title : '';
+              });
+          } else {
+            this.eventId = undefined;
+            this.eventTitle = '';
+          }
+        });
+      } else {
+        this.http.get<any>(`${environment.serverBaseUrl}/evaluations/${evaluationId}`, { headers: this.getAuthHeaders() })
+          .subscribe(evaluation => {
+            this.eventId = evaluation.eventId;
+            this.http.get<any[]>(`${environment.serverBaseUrl}/events`, { headers: this.getAuthHeaders() })
+              .subscribe(events => {
+                const event = events.find(e => Number(e.id) === this.eventId);
+                this.eventTitle = event ? event.title : '';
+              });
+            this.evaluationForm.patchValue({
+              rating: evaluation.rating,
+              comment: evaluation.comment,
+              checklist: {
+                punctualPayment: evaluation.checklist.punctualPayment,
+                goodCommunication: evaluation.checklist.goodCommunication,
+                respectedContract: evaluation.checklist.respectedContract
+              }
+            });
+          });
+      }
     });
   }
 
-  cancel(): void {
-    this.router.navigate(['/evaluations']);
+  saveEvaluation(evaluation: EvaluationsEntity) {
+    return this.http.post(
+      `${environment.serverBaseUrl}/evaluations`,
+      {
+        eventId: evaluation.eventId,
+        rating: evaluation.rating,
+        comment: evaluation.comment,
+        punctualPayment: evaluation.checklist.punctualPayment,
+        goodCommunication: evaluation.checklist.goodCommunication,
+        respectedContract: evaluation.checklist.respectedContract
+      },
+      { headers: this.getAuthHeaders() }
+    );
   }
-
-  ngOnInit(): void {
-    const evaluationId = +this.route.snapshot.paramMap.get('evaluationId')!;
-    if (!isNaN(evaluationId)) {
-      this.evaluationsService.getEvaluations().subscribe((evaluations) => {
-        const evaluation = evaluations.find((e) => e.id === evaluationId);
-        if (evaluation) {
-          this.isEditing = true;
-          this.evaluationId = evaluation.id;
-          this.eventId = evaluation.eventId;
-          this.evaluationForm.patchValue(evaluation);
-
-          this.http.get(`${environment.serverBaseUrl}/events`).subscribe((events: any) => {
-            const event = events.find((e: any) => e.event_id === this.eventId);
-            this.eventTitle = event?.title;
-          });
-        }
-      });
-    } else {
-      const eventId = +this.route.snapshot.queryParamMap.get('eventId')!;
-      this.eventId = eventId;
-      this.http.get(`${environment.serverBaseUrl}/events`).subscribe((events: any) => {
-        const event = events.find((e: any) => e.event_id === this.eventId);
-        this.eventTitle = event?.title;
-      });
+  onSaveEvaluation(): void {
+    if (!this.eventId) {
+      alert('No se pudo identificar el evento a evaluar. Intenta nuevamente.');
+      return;
     }
-  }
-
-  saveEvaluation(): void {
-    if (this.evaluationForm.valid) {
-      this.evaluationsService.getEvaluations().subscribe((evaluations) => {
-        const alreadyEvaluated = evaluations.some(
-          (evaluation) =>
-            evaluation.eventId === this.eventId &&
-            evaluation.id !== this.evaluationId // Permitir si es la misma evaluación
-        );
-
-        if (alreadyEvaluated) {
-          this.dialog.open(DialogComponent, {
-            data: { message: 'Este evento ya ha sido evaluado.' }
-          });
-        } else {
-          const evaluation = {
-            eventId: this.eventId,
-            ...this.evaluationForm.value,
-          };
-
-          if (this.isEditing) {
-            this.evaluationsService.updateEvaluation(this.evaluationId!, evaluation).subscribe(() => {
-              this.router.navigate(['/evaluations']);
-            });
-          } else {
-            this.evaluationsService.saveEvaluation(evaluation).subscribe(() => {
-              this.router.navigate(['/evaluations']);
-            });
-          }
-        }
-      });
-    } else {
+    if (this.evaluationForm.invalid) {
       this.evaluationForm.markAllAsTouched();
-      this.dialog.open(DialogComponent, {
-        data: { message: 'Por favor, completa todos los campos obligatorios.' }
+      alert('Por favor, completa todos los campos obligatorios.');
+      return;
+    }
+    const formValue = this.evaluationForm.value;
+    const evaluation: EvaluationsEntity = {
+      id: this.evaluationId ?? 0,
+      eventId: this.eventId,
+      rating: formValue.rating,
+      comment: formValue.comment,
+      checklist: {
+        punctualPayment: formValue.checklist.punctualPayment,
+        goodCommunication: formValue.checklist.goodCommunication,
+        respectedContract: formValue.checklist.respectedContract
+      }
+    };
+
+    if (this.isEditMode && this.evaluationId) {
+      this.evaluationsService.deleteEvaluation(this.evaluationId).subscribe({
+        next: () => {
+          this.evaluationsService.saveEvaluation(evaluation).subscribe({
+            next: () => {
+              alert('Evaluación actualizada correctamente.');
+              this.router.navigate(['/evaluated-events']);
+            },
+            error: (err) => {
+              alert('Error al guardar la evaluación: ' + (err?.error?.message || err.message));
+            }
+          });
+        },
+        error: (err) => {
+          alert('Error al borrar la evaluación original: ' + (err?.error?.message || err.message));
+        }
+      });
+    } else {
+      this.evaluationsService.saveEvaluation(evaluation).subscribe({
+        next: () => {
+          alert('Evaluación guardada correctamente.');
+          this.router.navigate(['/evaluated-events']);
+        },
+        error: (err) => {
+          alert('Error al guardar la evaluación: ' + (err?.error?.message || err.message));
+        }
       });
     }
+  }
+
+  cancel(): void {
+    this.router.navigate(['/evaluated-events']);
   }
 }
